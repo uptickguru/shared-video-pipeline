@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# Local databases and logs
+*.db
+*.log
+jobs/
+output_videos/
+output_videos_cinematic/
+production_assets/
+fraud_movie_assets/
+
+# Credentials and keys
+.env
+vast_id
+vast_id.pub
+vast_id.bak
+ssh_key
+id_rsa
+*.pem
+*.key

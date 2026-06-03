@@ -1,0 +1,831 @@
+Found following relevant nodes:
+
+--- KSampler ---
+  model: ['MODEL', {'tooltip': 'The model used for denoising the input latent.'}]
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'control_after_generate': True, 'tooltip': 'The random seed used for creating the noise.'}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000, 'tooltip': 'The number of steps used in the denoising process.'}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01, 'tooltip': 'The Classifier-Free Guidance scale balances creativity and adherence to the prompt. Higher values result in images more closely matching the prompt however too high values will negatively impact quality.'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING', {'tooltip': 'The conditioning describing the attributes you want to include in the image.'}]
+  negative: ['CONDITIONING', {'tooltip': 'The conditioning describing the attributes you want to exclude from the image.'}]
+  latent_image: ['LATENT', {'tooltip': 'The latent image to denoise.'}]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'tooltip': 'The amount of denoising applied, lower values will maintain the structure of the initial image allowing for image to image sampling.'}]
+
+--- CheckpointLoaderSimple ---
+  ckpt_name: [Options List - 0 items]
+
+--- LoadImage ---
+  image: [Options List - 1 items]
+
+--- LoadImageMask ---
+  image: [Options List - 1 items]
+  channel: [Options List - 4 items]
+
+--- LoadImageOutput ---
+  image: ['COMBO', {'image_upload': True, 'image_folder': 'output', 'remote': {'route': '/internal/files/output', 'refresh_button': True, 'control_after_refresh': 'first'}}]
+
+--- KSamplerAdvanced ---
+  model: ['MODEL']
+  add_noise: [Options List - 2 items]
+  noise_seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'control_after_generate': True}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  latent_image: ['LATENT']
+  start_at_step: ['INT', {'default': 0, 'min': 0, 'max': 10000}]
+  end_at_step: ['INT', {'default': 10000, 'min': 0, 'max': 10000}]
+  return_with_leftover_noise: [Options List - 2 items]
+
+--- KSamplerSelect ---
+  sampler_name: [Options List - 38 items]
+
+--- EmptyLatentAudio ---
+  seconds: ['FLOAT', {'default': 47.6, 'min': 1.0, 'max': 1000.0, 'step': 0.1}]
+  batch_size: ['INT', {'default': 1, 'min': 1, 'max': 4096, 'tooltip': 'The number of latent images in the batch.'}]
+
+--- VAEEncodeAudio ---
+  audio: ['AUDIO']
+  vae: ['VAE']
+
+--- VAEDecodeAudio ---
+  samples: ['LATENT']
+  vae: ['VAE']
+
+--- SaveAudio ---
+  audio: ['AUDIO']
+  filename_prefix: ['STRING', {'default': 'audio/ComfyUI'}]
+
+--- SaveAudioMP3 ---
+  audio: ['AUDIO']
+  filename_prefix: ['STRING', {'default': 'audio/ComfyUI'}]
+  quality: [Options List - 3 items]
+
+--- SaveAudioOpus ---
+  audio: ['AUDIO']
+  filename_prefix: ['STRING', {'default': 'audio/ComfyUI'}]
+  quality: [Options List - 5 items]
+
+--- LoadAudio ---
+  audio: [Options List - 0 items]
+
+--- PreviewAudio ---
+  audio: ['AUDIO']
+
+--- ConditioningStableAudio ---
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  seconds_start: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1000.0, 'step': 0.1}]
+  seconds_total: ['FLOAT', {'default': 47.0, 'min': 0.0, 'max': 1000.0, 'step': 0.1}]
+
+--- TextEncodeAceStepAudio ---
+  clip: ['CLIP']
+  tags: ['STRING', {'multiline': True, 'dynamicPrompts': True}]
+  lyrics: ['STRING', {'multiline': True, 'dynamicPrompts': True}]
+  lyrics_strength: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}]
+
+--- EmptyAceStepLatentAudio ---
+  seconds: ['FLOAT', {'default': 120.0, 'min': 1.0, 'max': 1000.0, 'step': 0.1}]
+  batch_size: ['INT', {'default': 1, 'min': 1, 'max': 4096, 'tooltip': 'The number of latent images in the batch.'}]
+
+--- KlingLipSyncAudioToVideoNode ---
+  video: ['VIDEO', {}]
+  audio: ['AUDIO', {}]
+  voice_language: ['COMBO', {'options': ['zh', 'en'], 'default': 'en'}]
+
+--- easy ipadapterApply ---
+  model: ['MODEL']
+  image: ['IMAGE']
+  preset: [Options List - 15 items]
+  lora_strength: ['FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}]
+  provider: [Options List - 6 items]
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  cache_mode: [Options List - 5 items]
+  use_tiled: ['BOOLEAN', {'default': False}]
+
+--- easy ipadapterApplyADV ---
+  model: ['MODEL']
+  image: ['IMAGE']
+  preset: [Options List - 15 items]
+  lora_strength: ['FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}]
+  provider: [Options List - 6 items]
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 14 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  cache_mode: [Options List - 5 items]
+  use_tiled: ['BOOLEAN', {'default': False}]
+  use_batch: ['BOOLEAN', {'default': False}]
+  sharpening: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+
+--- easy ipadapterApplyFaceIDKolors ---
+  model: ['MODEL']
+  image: ['IMAGE']
+  preset: [Options List - 1 items]
+  lora_strength: ['FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}]
+  provider: [Options List - 6 items]
+  weight: ['FLOAT', {'default': 0.8, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_kolors: ['FLOAT', {'default': 0.8, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 14 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  cache_mode: [Options List - 5 items]
+  use_tiled: ['BOOLEAN', {'default': False}]
+  use_batch: ['BOOLEAN', {'default': False}]
+  sharpening: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+
+--- easy ipadapterApplyEncoder ---
+  model: ['MODEL']
+  clip_vision: ['CLIP_VISION']
+  image1: ['IMAGE']
+  preset: [Options List - 9 items]
+  num_embeds: ['INT', {'default': 2, 'min': 1, 'max': 4}]
+
+--- easy ipadapterApplyEmbeds ---
+  model: ['MODEL']
+  clip_vision: ['CLIP_VISION']
+  ipadapter: ['IPADAPTER']
+  pos_embed: ['EMBEDS']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_type: [Options List - 14 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- easy ipadapterApplyRegional ---
+  pipe: ['PIPE_LINE']
+  image: ['IMAGE']
+  positive: ['STRING', {'default': '', 'placeholder': 'positive', 'multiline': True}]
+  negative: ['STRING', {'default': '', 'placeholder': 'negative', 'multiline': True}]
+  image_weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 3.0, 'step': 0.05}]
+  prompt_weight: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.05}]
+  weight_type: [Options List - 14 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+
+--- easy ipadapterApplyFromParams ---
+  model: ['MODEL']
+  preset: [Options List - 9 items]
+  ipadapter_params: ['IPADAPTER_PARAMS']
+  combine_embeds: [Options List - 7 items]
+  embeds_scaling: [Options List - 4 items]
+  cache_mode: [Options List - 5 items]
+
+--- easy ipadapterStyleComposition ---
+  model: ['MODEL']
+  image_style: ['IMAGE']
+  preset: [Options List - 9 items]
+  weight_style: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_composition: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  expand_style: ['BOOLEAN', {'default': False}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  cache_mode: [Options List - 5 items]
+
+--- easy pulIDApply ---
+  model: ['MODEL']
+  pulid_file: [Options List - 0 items]
+  insightface: [Options List - 3 items]
+  image: ['IMAGE']
+  method: [Options List - 3 items]
+  weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 5.0, 'step': 0.05}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+
+--- easy pulIDApplyADV ---
+  model: ['MODEL']
+  pulid_file: [Options List - 0 items]
+  insightface: [Options List - 3 items]
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 5.0, 'step': 0.05}]
+  projection: [Options List - 3 items]
+  fidelity: ['INT', {'default': 8, 'min': 0, 'max': 32, 'step': 1}]
+  noise: ['FLOAT', {'default': 0.0, 'min': -1.0, 'max': 1.0, 'step': 0.1}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+
+--- easy fullkSampler ---
+  pipe: ['PIPE_LINE']
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 8, 'min': 0.0, 'max': 100.0}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 11 items]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+  image_output: [Options List - 8 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSampler ---
+  pipe: ['PIPE_LINE']
+  image_output: [Options List - 8 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSamplerCustom ---
+  pipe: ['PIPE_LINE']
+  image_output: [Options List - 8 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSamplerTiled ---
+  pipe: ['PIPE_LINE']
+  tile_size: ['INT', {'default': 512, 'min': 320, 'max': 4096, 'step': 64}]
+  image_output: [Options List - 7 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSamplerLayerDiffusion ---
+  pipe: ['PIPE_LINE']
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSamplerInpainting ---
+  pipe: ['PIPE_LINE']
+  grow_mask_by: ['INT', {'default': 6, 'min': 0, 'max': 64, 'step': 1}]
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+  additional: [Options List - 9 items]
+
+--- easy kSamplerDownscaleUnet ---
+  pipe: ['PIPE_LINE']
+  downscale_mode: [Options List - 3 items]
+  block_number: ['INT', {'default': 3, 'min': 1, 'max': 32, 'step': 1}]
+  downscale_factor: ['FLOAT', {'default': 2.0, 'min': 0.1, 'max': 9.0, 'step': 0.001}]
+  start_percent: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_percent: ['FLOAT', {'default': 0.35, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  downscale_after_skip: ['BOOLEAN', {'default': True}]
+  downscale_method: [Options List - 5 items]
+  upscale_method: [Options List - 5 items]
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy kSamplerSDTurbo ---
+  pipe: ['PIPE_LINE']
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy fullCascadeKSampler ---
+  pipe: ['PIPE_LINE']
+  encode_vae_name: [Options List - 1 items]
+  decode_vae_name: [Options List - 1 items]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 4.0, 'min': 0.0, 'max': 100.0}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 1125899906842624}]
+
+--- easy cascadeKSampler ---
+  pipe: ['PIPE_LINE']
+  image_output: [Options List - 6 items]
+  link_id: ['INT', {'default': 0, 'min': 0, 'max': 9223372036854775807, 'step': 1}]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- easy loadImagesForLoop ---
+  directory: ['STRING', {'default': ''}]
+
+--- easy loadImageBase64 ---
+  base64_data: ['STRING', {'default': ''}]
+  image_output: [Options List - 4 items]
+  save_prefix: ['STRING', {'default': 'ComfyUI'}]
+
+--- KSampler Config (rgthree) ---
+  steps_total: ['INT', {'default': 30, 'min': 1, 'max': 16384, 'step': 1}]
+  refiner_step: ['INT', {'default': 24, 'min': 1, 'max': 16384, 'step': 1}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.5}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+
+--- ImpactIPAdapterApplySEGS ---
+  segs: ['SEGS']
+  ipadapter_pipe: ['IPADAPTER_PIPE']
+  weight: ['FLOAT', {'default': 0.7, 'min': -1, 'max': 3, 'step': 0.05}]
+  noise: ['FLOAT', {'default': 0.4, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+  weight_type: [Options List - 3 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 0.9, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  unfold_batch: ['BOOLEAN', {'default': False}]
+  faceid_v2: ['BOOLEAN', {'default': False}]
+  weight_v2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  context_crop_factor: ['FLOAT', {'default': 1.2, 'min': 1.0, 'max': 100, 'step': 0.1}]
+  reference_image: ['IMAGE']
+
+--- KSamplerProvider ---
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'tooltip': 'Random seed to use for generating CPU noise for sampling.'}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000, 'tooltip': 'total sampling steps'}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'tooltip': 'classifier free guidance value'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 16 items]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'tooltip': 'The amount of noise to remove. This amount is the noise added at the start, and the higher it is, the more the input latent will be modified before being returned.'}]
+  basic_pipe: ['BASIC_PIPE', {'tooltip': 'basic_pipe input for sampling'}]
+
+--- TiledKSamplerProvider ---
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'tooltip': 'Random seed to use for generating CPU noise for sampling.'}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000, 'tooltip': 'total sampling steps'}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'tooltip': 'classifier free guidance value'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'tooltip': 'The amount of noise to remove. This amount is the noise added at the start, and the higher it is, the more the input latent will be modified before being returned.'}]
+  tile_width: ['INT', {'default': 512, 'min': 320, 'max': 16384, 'step': 64, 'tooltip': 'Sets the width of the tile to be used in TiledKSampler.'}]
+  tile_height: ['INT', {'default': 512, 'min': 320, 'max': 16384, 'step': 64, 'tooltip': 'Sets the height of the tile to be used in TiledKSampler.'}]
+  tiling_strategy: [Options List - 3 items]
+  basic_pipe: ['BASIC_PIPE', {'tooltip': 'basic_pipe input for sampling'}]
+
+--- KSamplerAdvancedProvider ---
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'toolip': 'classifier free guidance value'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 16 items]
+  sigma_factor: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01, 'toolip': 'Multiplier of noise schedule'}]
+  basic_pipe: ['BASIC_PIPE', {'toolip': 'basic_pipe input for sampling'}]
+
+--- ImpactKSamplerBasicPipe ---
+  basic_pipe: ['BASIC_PIPE', {'tooltip': 'basic_pipe input for sampling'}]
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'tooltip': 'Random seed to use for generating CPU noise for sampling.'}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000, 'tooltip': 'total sampling steps'}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'tooltip': 'classifier free guidance value'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 16 items]
+  latent_image: ['LATENT', {'tooltip': 'input latent image'}]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'tooltip': 'The amount of noise to remove. This amount is the noise added at the start, and the higher it is, the more the input latent will be modified before being returned.'}]
+
+--- ImpactKSamplerAdvancedBasicPipe ---
+  basic_pipe: ['BASIC_PIPE', {'tooltip': 'basic_pipe input for sampling'}]
+  add_noise: ['BOOLEAN', {'default': True, 'label_on': 'enable', 'label_off': 'disable', 'tooltip': 'Whether to add noise'}]
+  noise_seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'tooltip': 'Random seed to use for generating CPU noise for sampling.'}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000, 'tooltip': 'total sampling steps'}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'tooltip': 'classifier free guidance value'}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 16 items]
+  latent_image: ['LATENT', {'tooltip': 'input latent image'}]
+  start_at_step: ['INT', {'default': 0, 'min': 0, 'max': 10000, 'tooltip': "The starting step of the sampling to be applied at this node within the range of 'steps'."}]
+  end_at_step: ['INT', {'default': 10000, 'min': 0, 'max': 10000, 'tooltip': 'The step at which sampling applied at this node will stop within the range of steps (if greater than steps, sampling will continue only up to steps).'}]
+  return_with_leftover_noise: ['BOOLEAN', {'default': False, 'label_on': 'enable', 'label_off': 'disable', 'tooltip': 'Whether to return the latent with noise remaining if the noise has not been completely removed according to the noise schedule, or to completely remove the noise before returning it.'}]
+
+--- CreateAudioMask ---
+  invert: ['BOOLEAN', {'default': False}]
+  frames: ['INT', {'default': 16, 'min': 1, 'max': 255, 'step': 1}]
+  scale: ['FLOAT', {'default': 0.5, 'min': 0.0, 'max': 2.0, 'step': 0.01}]
+  audio_path: ['STRING', {'default': 'audio.wav'}]
+  width: ['INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}]
+  height: ['INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}]
+
+--- LoadImagesFromFolderKJ ---
+  folder: ['STRING', {'default': ''}]
+  width: ['INT', {'default': 1024, 'min': -1, 'step': 1}]
+  height: ['INT', {'default': 1024, 'min': -1, 'step': 1}]
+  keep_aspect_ratio: [Options List - 3 items]
+
+--- AudioConcatenate ---
+  audio1: ['AUDIO']
+  audio2: ['AUDIO']
+  direction: [Options List - 2 items]
+
+--- PulidFluxModelLoader ---
+  pulid_file: [Options List - 0 items]
+
+--- PulidFluxInsightFaceLoader ---
+  provider: [Options List - 3 items]
+
+--- PulidFluxEvaClipLoader ---
+
+--- ApplyPulidFlux ---
+  model: ['MODEL']
+  pulid_flux: ['PULIDFLUX']
+  eva_clip: ['EVA_CLIP']
+  face_analysis: ['FACEANALYSIS']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 5.0, 'step': 0.05}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  fusion: [Options List - 7 items]
+  fusion_weight_max: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 20.0, 'step': 0.1}]
+  fusion_weight_min: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 20.0, 'step': 0.1}]
+  train_step: ['INT', {'default': 1000, 'min': 0, 'max': 20000, 'step': 1}]
+  use_gray: ['BOOLEAN', {'default': True, 'label_on': 'enabled', 'label_off': 'disabled'}]
+
+--- IPAdapter ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  weight_type: [Options List - 3 items]
+
+--- IPAdapterAdvanced ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  encode_batch_size: ['INT', {'default': 0, 'min': 0, 'max': 4096}]
+
+--- IPAdapterFaceID ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterFaceIDKolors ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_kolors: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAAdapterFaceIDBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterTiled ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  sharpening: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterTiledBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  sharpening: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+  embeds_scaling: [Options List - 4 items]
+  encode_batch_size: ['INT', {'default': 0, 'min': 0, 'max': 4096}]
+
+--- IPAdapterEmbeds ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  pos_embed: ['EMBEDS']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterEmbedsBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  pos_embed: ['EMBEDS']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterStyleComposition ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image_style: ['IMAGE']
+  image_composition: ['IMAGE']
+  weight_style: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_composition: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  expand_style: ['BOOLEAN', {'default': False}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterStyleCompositionBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image_style: ['IMAGE']
+  image_composition: ['IMAGE']
+  weight_style: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_composition: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  expand_style: ['BOOLEAN', {'default': False}]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterMS ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_faceidv2: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  layer_weights: ['STRING', {'default': '', 'multiline': True}]
+
+--- IPAdapterClipVisionEnhancer ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  enhance_tiles: ['INT', {'default': 2, 'min': 1, 'max': 16}]
+  enhance_ratio: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+
+--- IPAdapterClipVisionEnhancerBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+  enhance_tiles: ['INT', {'default': 2, 'min': 1, 'max': 16}]
+  enhance_ratio: ['FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+  encode_batch_size: ['INT', {'default': 0, 'min': 0, 'max': 4096}]
+
+--- IPAdapterFromParams ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  ipadapter_params: ['IPADAPTER_PARAMS']
+  combine_embeds: [Options List - 5 items]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterPreciseStyleTransfer ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  style_boost: ['FLOAT', {'default': 1.0, 'min': -5, 'max': 5, 'step': 0.05}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterPreciseStyleTransferBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  style_boost: ['FLOAT', {'default': 1.0, 'min': -5, 'max': 5, 'step': 0.05}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterPreciseComposition ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  composition_boost: ['FLOAT', {'default': 0.0, 'min': -5, 'max': 5, 'step': 0.05}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterPreciseCompositionBatch ---
+  model: ['MODEL']
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}]
+  composition_boost: ['FLOAT', {'default': 0.0, 'min': -5, 'max': 5, 'step': 0.05}]
+  combine_embeds: [Options List - 5 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  embeds_scaling: [Options List - 4 items]
+
+--- IPAdapterUnifiedLoader ---
+  model: ['MODEL']
+  preset: [Options List - 6 items]
+
+--- IPAdapterUnifiedLoaderFaceID ---
+  model: ['MODEL']
+  preset: [Options List - 5 items]
+  lora_strength: ['FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}]
+  provider: [Options List - 6 items]
+
+--- IPAdapterModelLoader ---
+  ipadapter_file: [Options List - 0 items]
+
+--- IPAdapterInsightFaceLoader ---
+  provider: [Options List - 3 items]
+  model_name: [Options List - 2 items]
+
+--- IPAdapterUnifiedLoaderCommunity ---
+  model: ['MODEL']
+  preset: [Options List - 2 items]
+
+--- IPAdapterEncoder ---
+  ipadapter: ['IPADAPTER']
+  image: ['IMAGE']
+  weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 3.0, 'step': 0.01}]
+
+--- IPAdapterCombineEmbeds ---
+  embed1: ['EMBEDS']
+  method: [Options List - 7 items]
+
+--- IPAdapterNoise ---
+  type: [Options List - 4 items]
+  strength: ['FLOAT', {'default': 1.0, 'min': 0, 'max': 1, 'step': 0.05}]
+  blur: ['INT', {'default': 0, 'min': 0, 'max': 32, 'step': 1}]
+
+--- IPAdapterSaveEmbeds ---
+  embeds: ['EMBEDS']
+  filename_prefix: ['STRING', {'default': 'IP_embeds'}]
+
+--- IPAdapterLoadEmbeds ---
+  embeds: [Options List - 0 items]
+
+--- IPAdapterWeights ---
+  weights: ['STRING', {'default': '1.0, 0.0', 'multiline': True}]
+  timing: [Options List - 6 items]
+  frames: ['INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}]
+  start_frame: ['INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}]
+  end_frame: ['INT', {'default': 9999, 'min': 0, 'max': 9999, 'step': 1}]
+  add_starting_frames: ['INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}]
+  add_ending_frames: ['INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}]
+  method: [Options List - 3 items]
+
+--- IPAdapterCombineWeights ---
+  weights_1: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+  weights_2: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}]
+
+--- IPAdapterWeightsFromStrategy ---
+  weights_strategy: ['WEIGHTS_STRATEGY']
+
+--- IPAdapterPromptScheduleFromWeightsStrategy ---
+  weights_strategy: ['WEIGHTS_STRATEGY']
+  prompt: ['STRING', {'default': '', 'multiline': True}]
+
+--- IPAdapterRegionalConditioning ---
+  image: ['IMAGE']
+  image_weight: ['FLOAT', {'default': 1.0, 'min': -1.0, 'max': 3.0, 'step': 0.05}]
+  prompt_weight: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.05}]
+  weight_type: [Options List - 15 items]
+  start_at: ['FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+  end_at: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}]
+
+--- IPAdapterCombineParams ---
+  params_1: ['IPADAPTER_PARAMS']
+  params_2: ['IPADAPTER_PARAMS']
+
+--- KSamplerVariationsStochastic+ ---
+  model: ['MODEL']
+  latent_image: ['LATENT']
+  noise_seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}]
+  steps: ['INT', {'default': 25, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 7.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}]
+  sampler: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  variation_seed: ['INT:seed', {'default': 0, 'min': 0, 'max': 18446744073709551615}]
+  variation_strength: ['FLOAT', {'default': 0.2, 'min': 0.0, 'max': 1.0, 'step': 0.05, 'round': 0.01}]
+  cfg_scale: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.05, 'round': 0.01}]
+
+--- KSamplerVariationsWithNoise+ ---
+  model: ['MODEL']
+  latent_image: ['LATENT']
+  main_seed: ['INT:seed', {'default': 0, 'min': 0, 'max': 18446744073709551615}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  variation_strength: ['FLOAT', {'default': 0.17, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'round': 0.01}]
+  variation_seed: ['INT:seed', {'default': 12345, 'min': 0, 'max': 18446744073709551615}]
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01, 'round': 0.01}]
+
+--- LoadImagesFromPath ---
+  file_path: ['STRING', {'multiline': False, 'default': '', 'dynamicPrompts': False}]
+
+--- LoadImagesFromURL ---
+  url: ['STRING', {'multiline': True, 'default': 'https://', 'dynamicPrompts': False}]
+
+--- LoadImagesToBatch ---
+  images: ['IMAGEBASE64']
+
+--- AudioPlay ---
+  audio: ['AUDIO']
+
+--- AnalyzeAudio ---
+  json: ['*']
+
+--- VideoCombine_Adv ---
+  image_batch: ['IMAGE']
+  frame_rate: ['INT', {'default': 8, 'min': 1, 'step': 1}]
+  loop_count: ['INT', {'default': 0, 'min': 0, 'max': 100, 'step': 1}]
+  filename_prefix: ['STRING', {'default': 'Comfyui'}]
+  format: [Options List - 6 items]
+  pingpong: ['BOOLEAN', {'default': False}]
+  save_image: ['BOOLEAN', {'default': True}]
+  metadata: ['BOOLEAN', {'default': False}]
+
+--- LoadAndCombinedAudio_ ---
+  audios: ['AUDIOBASE64']
+  start_time: ['FLOAT', {'default': 0, 'min': 0, 'max': 10000000, 'step': 0.01}]
+  duration: ['FLOAT', {'default': 10, 'min': -1, 'max': 10000000, 'step': 0.01}]
+
+--- CombineAudioVideo ---
+  video: ['SCENE_VIDEO']
+  audio: ['AUDIO']
+
+--- AudioToPrompt ---
+  vqgan: ['VQGAN']
+  audio: ['AUDIO']
+  device: [Options List - 2 items]
+
+--- Semantic2Audio ---
+  vqgan: ['VQGAN']
+  codes: ['NUMPY']
+  device: [Options List - 2 items]
+
+--- KSampler (WAS) ---
+  model: ['MODEL']
+  seed: ['SEED']
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  latent_image: ['LATENT']
+  denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+
+--- KSampler Cycle ---
+  model: ['MODEL']
+  seed: ['INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}]
+  steps: ['INT', {'default': 20, 'min': 1, 'max': 10000}]
+  cfg: ['FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}]
+  sampler_name: [Options List - 38 items]
+  scheduler: [Options List - 9 items]
+  positive: ['CONDITIONING']
+  negative: ['CONDITIONING']
+  latent_image: ['LATENT']
+  tiled_vae: [Options List - 2 items]
+  latent_upscale: [Options List - 6 items]
+  upscale_factor: ['FLOAT', {'default': 2.0, 'min': 0.1, 'max': 8.0, 'step': 0.1}]
+  upscale_cycles: ['INT', {'default': 2, 'min': 2, 'max': 12, 'step': 1}]
+  starting_denoise: ['FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+  cycle_denoise: ['FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}]
+  scale_denoise: [Options List - 2 items]
+  scale_sampling: [Options List - 4 items]
+  vae: ['VAE']

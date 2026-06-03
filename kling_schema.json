@@ -1,0 +1,63 @@
+{
+  "input": {
+    "required": {
+      "video": [
+        "VIDEO",
+        {}
+      ],
+      "audio": [
+        "AUDIO",
+        {}
+      ],
+      "voice_language": [
+        "COMBO",
+        {
+          "options": [
+            "zh",
+            "en"
+          ],
+          "default": "en"
+        }
+      ]
+    },
+    "hidden": {
+      "auth_token": "AUTH_TOKEN_COMFY_ORG",
+      "comfy_api_key": "API_KEY_COMFY_ORG",
+      "unique_id": "UNIQUE_ID"
+    }
+  },
+  "input_order": {
+    "required": [
+      "video",
+      "audio",
+      "voice_language"
+    ],
+    "hidden": [
+      "auth_token",
+      "comfy_api_key",
+      "unique_id"
+    ]
+  },
+  "output": [
+    "VIDEO",
+    "STRING",
+    "STRING"
+  ],
+  "output_is_list": [
+    false,
+    false,
+    false
+  ],
+  "output_name": [
+    "VIDEO",
+    "video_id",
+    "duration"
+  ],
+  "name": "KlingLipSyncAudioToVideoNode",
+  "display_name": "Kling Lip Sync Video with Audio",
+  "description": "Kling Lip Sync Audio to Video Node. Syncs mouth movements in a video file to the audio content of an audio file. When using, ensure that the audio contains clearly distinguishable vocals and that the video contains a distinct face. The audio file should not be larger than 5MB. The video file should not be larger than 100MB, should have height/width between 720px and 1920px, and should be between 2s and 10s in length.",
+  "python_module": "comfy_api_nodes.nodes_kling",
+  "category": "api node/video/Kling",
+  "output_node": false,
+  "api_node": true
+}

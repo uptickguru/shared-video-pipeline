@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sqlalchemy
+redis
+rq
+playwright
+pydantic
+pydantic-settings
